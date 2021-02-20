@@ -1,0 +1,33 @@
+from userORM_app.models import User
+python manage.py makemigrations
+python manage.py migrate
+
+User.objects.create(first_name = "", last_name = "", email_address = "", age = "" )
+
+User.objects.create(first_name = "Cloud", last_name = "Strife", email_address = "cloud_strife@shinra.com", age = "21" )
+User.objects.create(first_name = "Tifa", last_name = "Lockhart", email_address = "tFists@shinra.com", age = "20" )
+User.objects.create(first_name = "Barret", last_name = "Wallace", email_address = "shinraSux@shinra.com", age = "35" )
+
+
+## def __repr__(self):
+        return "User: {}".format(self.first_name)
+User.objects.all()
+
+User.objects.first()
+
+User.objects.last()
+
+user_to_update = User.objects.get(id=3)
+user_to_update.last_name = "Pancakes"
+user_to_update.save()
+>>> User.objects.filter(last_name =  "Pancakes")
+<QuerySet [User: Barret]>
+
+>>> user_to_delete = User.objects.get(id=2)
+>>> user_to_delete.delete()
+>>> User.objects.all()
+<QuerySet [User: Cloud, User: Barret]>
+
+>>> User.objects.all().order_by("first_name")
+<QuerySet [User: Barret, User: Cloud]>
+>>>
